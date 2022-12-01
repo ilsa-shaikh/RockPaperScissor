@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock,Paper& Scissor</title>
+    <link rel="stylesheet" href="./rock_paper_scissor.css">
+  </head>
+  <body>
+    <div class="heading">
+      <h1>Rock Paper Scissor</h1>
+    </div>
+    <div class="fl">
+    <div class="main">
+      <div class="score">
+        <label for="user">User</label><br />
+        <input type="text" value="-" id="user" readonly />
+      </div>
+      <div class="score">
+        <label for="computer">Computer</label><br />
+        <input type="text" value="-" id="computer" readonly /><br />
+      </div>
+      <div class="btn">
+      <p id="answer"></p>
+      <button onclick="show('Rock')">✊</button>
+      <button onclick="show('Paper')">✋</button>
+      <button onclick="show('Scissor')">🤞</button>
+      <p class="note">Make your move</p>
+    </div>
+  </div>
+  <div class="ok">
+      <p style="color:rgb(250, 7, 222) ;">ScoreBoard</p>
+      <div class="scoreboard" id="sb">
+      <table>
+        <tr>
+          <th>User</th>
+          <th>Computer</th>
+        </tr>
+        <tr>
+          <td><input type="button" id="set" value="0"></td>
+          <td><input type="button" id="met" value="0"></td>
+        </tr>
+      </table>
+      <button onclick="window.location.reload()">Reset</button>
+      </div>
+    </div>
+    </div>
+    <script>var scoreHuman = document.getElementById("set").value;
+      var scoreComputer = document.getElementById("met").value;
+      console.log(scoreHuman)
+      
+                
+           function show(v) {
+             let data= document.getElementById("user").value;
+             document.getElementById("user").value=v;
+             data=v;
+             console.log(data);
+           
+             //let display="";
+             let m = Math.floor(Math.random() * 3);
+             let new_data = {0:"Rock",1:"Paper",2:"Scissor"}
+             //if(m==0){
+             //   display="Rock"
+            // }else if(m==1){
+            //    display="Paper"
+            // }else if(m==2){
+            //    display="Scissor"
+            // }
+             document.getElementById("computer").value=new_data[m]//display;
+             m=new_data[m]//display;
+             console.log(m)
+             let text ="";
+             if (data==m) {
+               text = "Tie";
+             } else if(data=='Rock'){
+                 if(m=='Paper'){
+                 text = "you lost..try again"
+                scoreComputer =
+                parseInt(scoreComputer)+1;
+                console.log(scoreComputer)
+                 }else if(m=='Scissor'){
+                 text="you win"
+                 scoreHuman= 
+                 parseInt(scoreHuman)+1;
+                 }
+             } else if(data=='Paper'){
+                 if(m=='Rock'){
+                 text="you win"
+                 scoreHuman= 
+                 parseInt(scoreHuman)+1;
+                 }else if(m=='Scissor'){
+                 text="you lost..try again"
+                 scoreComputer= 
+                 parseInt(scoreComputer)+1;
+                 }
+             } else if(data=='Scissor'){
+                 if(m=='Rock'){
+                 text="you lost..try again"
+                 scoreComputer = 
+                 parseInt(scoreComputer)+1;
+                 }else if(m=='Paper'){
+                 text="you win"
+                 scoreHuman=
+                  parseInt(scoreHuman)+1;           }
+             } 
+           document.getElementById("answer").innerHTML=text;
+           document.getElementById('set').value=scoreHuman;
+           document.getElementById('met').value=scoreComputer;
+           }
+     </script>
+    </body>
+</html>
